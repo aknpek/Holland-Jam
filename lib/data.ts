@@ -310,7 +310,7 @@ export const events: Event[] = [
   ...Array.from({ length: 20 }, (_, i) => ({
     id: `${10 + i}`,
     title: `Event ${10 + i}`,
-    type: ['jam', 'open-mic', 'concert', 'workshop'][Math.floor(Math.random() * 4)] as 'jam' | 'open-mic' | 'concert' | 'workshop',
+    type: ['jam', 'open-mic', 'concert', 'workshop'][Math.floor(Math.random() * 4)] as Event['type'],
     date: randomFutureDate().toISOString().split('T')[0],
     time: randomTime(),
     location: `Venue ${10 + i}`,
@@ -322,19 +322,19 @@ export const events: Event[] = [
     organizer: {
       id: `${10 + i}`,
       name: `Organizer ${10 + i}`,
-      role: 'organizer',
+      role: 'organizer' as const,
       image: `https://picsum.photos/seed/organizer-${10 + i}/200/200`,
       bio: `Bio for Organizer ${10 + i}`
     },
     description: `Description for Event ${10 + i}`,
     image: `https://picsum.photos/seed/event-${10 + i}/1200/800`,
     previewImage: `https://picsum.photos/seed/event-${10 + i}-preview/400/300`,
-    status: Math.random() > 0.8 ? 'sold-out' : 'available',
+    status: Math.random() > 0.8 ? 'sold-out' : 'available' as Event['status'],
     viewCount: Math.floor(Math.random() * 3000) + 500,
     price: Math.floor(Math.random() * 30) + 5,
     capacity: Math.floor(Math.random() * 200) + 50,
     genre: ['Rock', 'Pop', 'Jazz', 'Classical', 'Electronic'].sort(() => 0.5 - Math.random()).slice(0, 2)
-  }))
+  })) as Event[]
 ]
 
 export const people: Person[] = [
