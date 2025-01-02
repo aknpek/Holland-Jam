@@ -13,7 +13,7 @@ interface CalendarViewProps {
   onDateSelect: (date: Date) => void
 }
 
-function classNames(...classes: string[]) {
+function classNames(...classes: (string | boolean | undefined)[]) {
   return classes.filter(Boolean).join(' ')
 }
 
@@ -65,10 +65,10 @@ export function CalendarView({ events, onDateSelect }: CalendarViewProps) {
               className={classNames(
                 'py-6 focus:z-10',
                 isCurrentMonth ? 'bg-black' : 'bg-black/50',
-                (isToday || hasEvent) && 'font-semibold',
-                isToday && 'text-white',
-                !isToday && isCurrentMonth && !hasEvent && 'text-white/70',
-                !isToday && !isCurrentMonth && !hasEvent && 'text-white/30',
+                (isToday || hasEvent) ? 'font-semibold' : '',
+                isToday ? 'text-white' : '',
+                !isToday && isCurrentMonth && !hasEvent ? 'text-white/70' : '',
+                !isToday && !isCurrentMonth && !hasEvent ? 'text-white/30' : '',
                 hasEvent && 'text-blue-500',
                 (hasEvent || isToday) && 'hover:bg-white/10',
                 dayIdx === 0 && 'rounded-tl-lg',
