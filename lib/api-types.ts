@@ -6,6 +6,19 @@ export type ApiResponse<T> = {
   error?: string
 }
 
+export type EventResponse = ApiResponse<{
+  event: Event
+}>
+
+export type EventsResponse = ApiResponse<{
+  events: Event[]
+  total: number
+}>
+
+export type PersonResponse = ApiResponse<{
+  person: Person
+}>
+
 export type PeopleResponse = ApiResponse<{
   people: Person[]
   total: number
